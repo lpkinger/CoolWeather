@@ -47,10 +47,10 @@ public class AutoUpdateService extends Service {
         SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString = prefs.getString("weather",null);
         if (weatherString!=null){
-            final Weather weather = Utility.handlerWeatherResponse(weatherString);
+            final Weather weather = Utility.handleWeatherResponse(weatherString);
             String weatherId = weather.basic.weatherId;
             String weatherUrl = "http://guolin.tech/api/weather?cityid="+weatherId+"&key=bc0418b57b2d4918819d3974ac1285d9";
-            HttpUtil.sendOkHttpReqest(weatherUrl, new Callback() {
+            HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
                     e.printStackTrace();
@@ -60,7 +60,7 @@ public class AutoUpdateService extends Service {
                 public void onResponse(Call call, Response response) throws IOException {
 
                                 String responText=response.body().string();
-                                Weather weather1=Utility.handlerWeatherResponse(responText);
+                                Weather weather1=Utility.handleWeatherResponse(responText);
                                 if(weather!=null&&"ok".equals(weather.status)){
                                     SharedPreferences.Editor editor=PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
                                     editor.putString("weather",responText);
@@ -73,7 +73,7 @@ public class AutoUpdateService extends Service {
     }
     private void updateBingPic(){
         final String requestBingPic="http://guolin.tech/api/bing_pic";
-        HttpUtil.sendOkHttpReqest(requestBingPic, new Callback() {
+        HttpUtil.sendOkHttpRequest(requestBingPic, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
