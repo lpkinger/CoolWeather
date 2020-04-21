@@ -5,5 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WeatherActivity">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bing_pic_img"
+            android:scaleType="centerCrop"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/weather_layout"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:fitsSystemWindows="true">
+                <include layout="@layout/title"></include>
+                <include layout="@layout/now"></include>
+                <include layout="@layout/forecast"></include>
+                <include layout="@layout/aqi"></include>
+                <include layout="@layout/suggestion"></include>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
