@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
+
 
 public class Utility {
 
@@ -97,6 +99,13 @@ public class Utility {
             e.printStackTrace();
         }
         return null;
+    }
+    //根据泛型返回解析制定的类型
+    public  <T> T fromToJson(String json,Type listType){
+        Gson gson = new Gson();
+        T t = null;
+        t = gson.fromJson(json,listType);
+        return t;
     }
 
 }

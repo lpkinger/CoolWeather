@@ -6,7 +6,6 @@ public class Now {
     @SerializedName("tmp")
     public String tmperature;
     @SerializedName("cond")
-    public String weatherId;
     public More  more;
 
     public class More{
